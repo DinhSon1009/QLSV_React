@@ -4,12 +4,7 @@ import { Table, Button } from "antd";
 import "antd/dist/antd.css";
 import { NavLink } from "react-router-dom";
 
-import {
-  OPEN_MODAL,
-  SET_DANH_SACH_SV,
-  SUA_SINH_VIEN,
-  XOA_SINH_VIEN,
-} from "../constants/qlsvConstants";
+import { OPEN_MODAL, SET_DANH_SACH_SV } from "../constants/qlsvConstants";
 import { sinhVienServices } from "../svServices/svServices";
 
 export class DanhSachSinhVien extends Component {
@@ -35,7 +30,6 @@ export class DanhSachSinhVien extends Component {
     };
     const suaSv = (id) => {
       sinhVienServices.layChiTietSinhVien(id).then((res) => {
-        // console.log(res.data)
         this.props.openModal(id, res.data);
       });
     };
