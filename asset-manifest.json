@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/QLSV_React/static/css/main.371dd8ec.chunk.css",
+    "main.js": "/QLSV_React/static/js/main.c01a16e1.chunk.js",
+    "main.js.map": "/QLSV_React/static/js/main.c01a16e1.chunk.js.map",
+    "runtime-main.js": "/QLSV_React/static/js/runtime-main.5630df74.js",
+    "runtime-main.js.map": "/QLSV_React/static/js/runtime-main.5630df74.js.map",
+    "static/css/2.fe5ac6bf.chunk.css": "/QLSV_React/static/css/2.fe5ac6bf.chunk.css",
+    "static/js/2.40f5e747.chunk.js": "/QLSV_React/static/js/2.40f5e747.chunk.js",
+    "static/js/2.40f5e747.chunk.js.map": "/QLSV_React/static/js/2.40f5e747.chunk.js.map",
+    "index.html": "/QLSV_React/index.html",
+    "static/css/2.fe5ac6bf.chunk.css.map": "/QLSV_React/static/css/2.fe5ac6bf.chunk.css.map",
+    "static/css/main.371dd8ec.chunk.css.map": "/QLSV_React/static/css/main.371dd8ec.chunk.css.map",
+    "static/js/2.40f5e747.chunk.js.LICENSE.txt": "/QLSV_React/static/js/2.40f5e747.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5630df74.js",
+    "static/css/2.fe5ac6bf.chunk.css",
+    "static/js/2.40f5e747.chunk.js",
+    "static/css/main.371dd8ec.chunk.css",
+    "static/js/main.c01a16e1.chunk.js"
+  ]
+}
