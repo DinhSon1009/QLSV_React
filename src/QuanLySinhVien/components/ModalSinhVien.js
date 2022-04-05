@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 export class ModalSinhVien extends Component {
   render() {
     const handleCancel = () => {
-      this.props.onFailed.current?.resetFields();
+      this.props.onFailed?.current?.resetFields();
       this.props.handleCancel();
     };
     return (
