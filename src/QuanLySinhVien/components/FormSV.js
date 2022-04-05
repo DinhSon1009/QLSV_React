@@ -3,7 +3,6 @@ import { Form, Input } from "antd";
 import {
   ON_FAILED_STATUS,
   SET_DANH_SACH_SV,
-  SUA_SINH_VIEN,
   THEM_SINH_VIEN,
 } from "../constants/qlsvConstants";
 import { connect } from "react-redux";
@@ -13,7 +12,7 @@ export class FormSV extends Component {
   formRef = createRef();
   onFinish = (values) => {
     this.props.sinhVien(values);
-    this.props.editMode === false &&
+    this.props.onEditSv === null &&
       sinhVienServices
         .themSinhVien(values)
         .then((res) => {
@@ -31,7 +30,7 @@ export class FormSV extends Component {
         .catch((err) => {
           console.log(err);
         });
-    this.props.editMode &&
+    this.props.onEditSv &&
       sinhVienServices
         .suaSinhVien(this.props.onEditId, values)
         .then((res) => {
@@ -159,12 +158,6 @@ let mapDispatchToProps = (dispatch) => {
       dispatch({
         type: ON_FAILED_STATUS,
         payload: obj,
-      });
-    },
-    suaSv: (data) => {
-      dispatch({
-        type: SUA_SINH_VIEN,
-        payload: data,
       });
     },
   };

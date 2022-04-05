@@ -14,7 +14,7 @@ import { sinhVienServices } from "../svServices/svServices";
 
 export class DanhSachSinhVien extends Component {
   render() {
-    let { dssv, editMode } = this.props;
+    let { dssv } = this.props;
     const { Column } = Table;
     const xoaSv = (id) => {
       sinhVienServices
@@ -79,7 +79,6 @@ export class DanhSachSinhVien extends Component {
 let mapStateToProps = (state) => {
   return {
     dssv: state.qlsvReducer.dssv,
-    editMode: state.qlsvReducer.editMode,
     onFinish: state.qlsvReducer.onFinish,
   };
 };

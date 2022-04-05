@@ -3,17 +3,14 @@ import {
   ON_FAILED_STATUS,
   OPEN_MODAL,
   SET_DANH_SACH_SV,
-  SUA_SINH_VIEN,
   THEM_SINH_VIEN,
 } from "../constants/qlsvConstants";
 
 let initialState = {
   dssv: [],
   isModalVisible: false,
-  editMode: false,
   onFinish: false,
-  onFailed: {},
-  failedStatus: false,
+  onFailed: null,
   onEditId: "",
   onEditSv: null,
 };
@@ -33,21 +30,12 @@ export const qlsvReducer = (state = initialState, action) => {
         onFinish: true,
       };
     }
-    case SUA_SINH_VIEN: {
-      return {
-        ...state,
-        isModalVisible: true,
-        editMode: true,
-      };
-    }
-
+    
     case OPEN_MODAL: {
       return {
         ...state,
         isModalVisible: true,
         onFinish: false,
-        editMode:
-          action.payload && action.payload.edit === "edit" ? true : false,
         onEditId:
           action.payload && action.payload.onEditId
             ? action.payload.onEditId
@@ -69,7 +57,6 @@ export const qlsvReducer = (state = initialState, action) => {
       return {
         ...state,
         onFailed: action.payload,
-        failedStatus: true,
       };
     }
     default:

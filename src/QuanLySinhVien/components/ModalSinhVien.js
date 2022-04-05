@@ -1,16 +1,12 @@
 import React, { Component } from "react";
 import { Modal, Button } from "antd";
 import FormSV from "./FormSV";
-import {
-  CLOSE_MODAL,
-  OPEN_MODAL,
-  THEM_SINH_VIEN,
-} from "../constants/qlsvConstants";
+import { CLOSE_MODAL, OPEN_MODAL } from "../constants/qlsvConstants";
 import { connect } from "react-redux";
 export class ModalSinhVien extends Component {
   render() {
     const handleCancel = () => {
-      this.props.failedStatus && this.props.onFailed.current.resetFields();
+      this.props.onFailed?.current.resetFields();
       this.props.handleCancel();
     };
     return (
@@ -24,7 +20,7 @@ export class ModalSinhVien extends Component {
           onCancel={handleCancel}
           footer={[
             <Button form="myForm" key="submit" htmlType="submit">
-              {this.props.editMode ? "Sửa" : "Thêm"}
+              {this.props.onEditSv ? "Sửa" : "Thêm"}
             </Button>,
             <Button key="cancel" onClick={handleCancel}>
               Cancel
@@ -42,8 +38,7 @@ let mapStatetoProps = (state) => {
   return {
     isModalVisible: state.qlsvReducer.isModalVisible,
     onFailed: state.qlsvReducer.onFailed,
-    failedStatus: state.qlsvReducer.failedStatus,
-    editMode: state.qlsvReducer.editMode,
+    onEditSv: state.qlsvReducer.onEditSv,
   };
 };
 
