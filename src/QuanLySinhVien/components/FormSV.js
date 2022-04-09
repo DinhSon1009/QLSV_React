@@ -92,15 +92,15 @@ export class FormSV extends Component {
               max: 6,
               message: "ID contains 1-6 digits",
             },
-            // ({ getFieldValue }) => ({
-            //   validator(_, value) {
-            //     let index = _this.props.dssv.findIndex((sv) => sv.id === value);
-            //     if (index !== -1) {
-            //       return Promise.reject(new Error("Existed ID"));
-            //     }
-            //     return Promise.resolve();
-            //   },
-            // }),
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                let index = _this.props.dssv.findIndex((sv) => sv.id === value);
+                if (index !== -1 && !_this.props.onEditSv) {
+                  return Promise.reject(new Error("Existed ID"));
+                }
+                return Promise.resolve();
+              },
+            }),
           ]}
           hasFeedback
         >
