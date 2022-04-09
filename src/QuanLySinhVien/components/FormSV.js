@@ -50,12 +50,7 @@ export class FormSV extends Component {
   componentDidUpdate() {
     this.props.onEditSv
       ? this.formRef.current.setFieldsValue(this.props.onEditSv)
-      : this.formRef.current.setFieldsValue({
-          name: "",
-          phone: "",
-          email: "",
-          id: "",
-        });
+      : this.formRef.current.resetFields();
   }
 
   onFinishFailed = (errorInfo) => {
@@ -100,7 +95,23 @@ export class FormSV extends Component {
               required: true,
               message: "Please input name!",
             },
+            {
+              pattern:
+                /[a-zA-Z_ÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂưăạảấầẩẫậắằẳẵặẹẻẽềềểỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ]+$/,
+              message: "Name can only include letters",
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (value?.trim().length <= 7) {
+                  return Promise.reject(
+                    new Error("Name must be at least 8 characters")
+                  );
+                }
+                return Promise.resolve();
+              },
+            }),
           ]}
+          hasFeedback
         >
           <Input />
         </Form.Item>
@@ -112,7 +123,11 @@ export class FormSV extends Component {
               required: true,
               message: "Please input email!",
             },
+            {
+              type: "email",
+            },
           ]}
+          hasFeedback
         >
           <Input />
         </Form.Item>
@@ -124,7 +139,17 @@ export class FormSV extends Component {
               required: true,
               message: "Please input phone!",
             },
+            {
+              pattern: /^\d+$/,
+              message: "Please enter only numbers",
+            },
+            {
+              min: 9,
+              whitespace: false,
+              message: "Phone must be at least 9 characters",
+            },
           ]}
+          hasFeedback
         >
           <Input />
         </Form.Item>
@@ -137,6 +162,7 @@ let mapStateToProps = (state) => {
     editMode: state.qlsvReducer.editMode,
     onEditId: state.qlsvReducer.onEditId,
     onEditSv: state.qlsvReducer.onEditSv,
+    isModalVisible: state.qlsvReducer.isModalVisible,
   };
 };
 
