@@ -58,6 +58,7 @@ export class FormSV extends Component {
   };
 
   render() {
+    let _this = this;
     return (
       <Form
         id="myForm"
@@ -82,6 +83,24 @@ export class FormSV extends Component {
               required: true,
               message: "Please input id!",
             },
+            {
+              pattern: /^\d+$/,
+              message: "ID can only numbers",
+            },
+            {
+              whitespace: false,
+              max: 6,
+              message: "ID contains 1-6 digits",
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                let index = _this.props.dssv.findIndex((sv) => sv.id === value);
+                if (index !== -1) {
+                  return Promise.reject(new Error("Existed ID"));
+                }
+                return Promise.resolve();
+              },
+            }),
           ]}
         >
           <Input disabled={this.props.onEditSv} />
@@ -163,6 +182,7 @@ let mapStateToProps = (state) => {
     onEditId: state.qlsvReducer.onEditId,
     onEditSv: state.qlsvReducer.onEditSv,
     isModalVisible: state.qlsvReducer.isModalVisible,
+    dssv: state.qlsvReducer.dssv,
   };
 };
 
