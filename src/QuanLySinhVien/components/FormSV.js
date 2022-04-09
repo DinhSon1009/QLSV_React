@@ -102,6 +102,7 @@ export class FormSV extends Component {
               },
             }),
           ]}
+          hasFeedback
         >
           <Input disabled={this.props.onEditSv} />
         </Form.Item>
